@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domotica-db", "Domotica-db\Domotica-db.csproj", "{A1D17783-F84E-444F-AAA5-09C840DC8ABF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1D17783-F84E-444F-AAA5-09C840DC8ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D17783-F84E-444F-AAA5-09C840DC8ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D17783-F84E-444F-AAA5-09C840DC8ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D17783-F84E-444F-AAA5-09C840DC8ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCD448D3-86AA-4C8C-B7AA-07D52B095990}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,52 @@
+﻿@page
+@model Domotica_db.Areas.Usuarios.Pages.Registrar.RegistrarModel
+@{
+    
+}
+    
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center"> Registro de usuarios </h1>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-4">
+                    <output id="imageRegistrar">
+                        <img id="imageRegistro" src="~/images/fotos/default.png" alt="" />
+                    </output>
+                    <input asp-for="Input.AvatarImage" onchange="previewFile" accept="image/*" type="file" id="files" />
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+
+                    <input asp-for="Input.Nombre" placeholder="Nombre" id="nombre" />
+                    <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+
+                    <input asp-for="Input.Apellido" placeholder="Apellido" id="Apellido" />
+                    <span asp-validation-for="Input.Apellido" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+
+                    <input asp-for="Input.NIF" placeholder="NIF" id="NIF" class="margindni" />
+                    <span asp-validation-for="Input.NIF" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+
+                    <input asp-for="Input.Email" placeholder="Email" id="email" class="marginemail" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+
+                    <input asp-for="Input.Password" placeholder="Contraseña" id="password" class="marginemail" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-6 offset-md-3 mt-2">
+                    @Html.DropDownList("Input.Role", new SelectList(Model.Input.rolesLista, "Text", "Text"), "Seleccione un role", null)
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+                    <button type="submit" class="btn-primary">Registrar</button>
+                </div>
+            </div>           
+        </form>
+    </div>
