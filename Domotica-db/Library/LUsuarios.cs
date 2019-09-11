@@ -119,7 +119,7 @@ namespace Domotica_db.Library
                         Email = item.Email,
                         Imagen = Path.Combine(rootFolder + "wwwroot\\images\\fotos\\" + imageDefault),
                         Role = role.Result[0].Text,
-
+                        
                     });
                 }
                 

@@ -82,10 +82,11 @@ namespace Domotica_db.Areas.Usuarios.Pages.RegisterUser
                  * en principio nos pondra como usuario normal o sea "User". 
                  * 
                  */
-                int numUsers = 0;
-                numUsers = _context.Users.Count();
+                //int numUsers = 0;
+                //numUsers = _context.Users.Count();
                 //numUsers es que si no hay ningun usuario registrado en la aplicación se creara un SuperAdmin y si lo hay será, un 
                 //User lo que se creara en la aplicación.
+                /*
                 if (numUsers == 0)
                 {
                     Input.Role = "SuperAdmin";
@@ -94,6 +95,7 @@ namespace Domotica_db.Areas.Usuarios.Pages.RegisterUser
                 {
                     Input.Role = "User";
                 }
+                */
                 
                 //prueba a: var usuarios45 =  objeto._context.Usuarios.ToList();
                 //await _context.AddAsync(usuarios);

@@ -16,29 +16,28 @@
                     <input asp-for="Input.AvatarImage" onchange="previewFile" accept="image/*" type="file" id="files" />
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-
                     <input asp-for="Input.Nombre" placeholder="Nombre" id="nombre" />
                     <span asp-validation-for="Input.Nombre" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-
                     <input asp-for="Input.Apellido" placeholder="Apellido" id="Apellido" />
                     <span asp-validation-for="Input.Apellido" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-
                     <input asp-for="Input.NIF" placeholder="NIF" id="NIF" class="margindni" />
                     <span asp-validation-for="Input.NIF" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-
                     <input asp-for="Input.Email" placeholder="Email" id="email" class="marginemail" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-
                     <input asp-for="Input.Password" placeholder="Contraseña" id="password" class="password" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-sm-10 offset-md-3 mt-2">
+                    <input asp-for="Input.Role" placeholder="Role" id="role" class="role" />
+                    <span asp-validation-for="Input.Role" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-6 offset-md-3 mt-2">
                     @Html.DropDownList("Input.Role", new SelectList(Model.Input.rolesLista, "Text", "Text"), "Seleccione un role", null)

@@ -24,6 +24,7 @@ namespace Domotica_db.Library
         //ApplicationRole y ApplicationUser es para usar el Identity modificado por nosotros.
         public RoleManager<ApplicationRole> _roleManager;
         public UserManager<ApplicationUser> _userManager;
+       
         public SignInManager<ApplicationUser> _signInManager;
         public IHostingEnvironment _environment;
 

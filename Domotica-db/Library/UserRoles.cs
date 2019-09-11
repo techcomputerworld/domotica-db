@@ -25,7 +25,7 @@ namespace Domotica_db.Library
             //aqui obtenemos el usuario con el ID
             string Id = Convert.ToString(ID);
             var users = await userManager.FindByIdAsync((Id));
-            
+            _userRoles.Clear();
             //aquí obtenemos los roles de los usuarios de users
             var roles = await userManager.GetRolesAsync(users);
             if (roles.Count.Equals(0))
@@ -56,6 +56,7 @@ namespace Domotica_db.Library
             Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
             */
         }
+        // este método me sirve perfectamente para obtener los roles desde la base de datos
         public List<SelectListItem> getRoles(RoleManager<ApplicationRole> roleManager)
         {
             //Roles representa a la tabla Roles de la base de datos

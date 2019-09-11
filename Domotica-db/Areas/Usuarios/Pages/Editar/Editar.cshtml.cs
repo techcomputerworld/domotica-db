@@ -48,6 +48,7 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
                 await editAsync(id);
             }
         }
+        [BindProperty]
         public InputModel Input { get; set; }
         public class InputModel : InputModelRegistrar
         {
@@ -65,7 +66,7 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
             //userList2 = objeto._context.Usuarios.Where(u => u.ApplicationUserId.Equals(userList1[0].Id)).ToList();
             var userRoles = await objeto._usersRole.GetRole(objeto._userManager, objeto._roleManager, userList1[0].Id);
             //vamos básicamente estoy mostrando al usuario esta información tal cual.
-            
+
             Input = new InputModel
             {
                 Nombre = userList1[0].Nombre,
@@ -74,13 +75,14 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
                 PhoneNumber = userList1[0].PhoneNumber,
                 Email = userList1[0].Email,
                 Password = "*********",
+                Role = userRoles[0].Text,
                 rolesLista = getRoles(userRoles[0].Text)
             };
             
         }
-        public async Task<IActionResult> OnPostAsync(string Email)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            if (Email != null)
+            if (Input.Email != null)
             {
                 var valor = await actualizarAsync();
                 if (valor)
@@ -126,11 +128,14 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
                         TwoFactorEnabled = userList1[0].TwoFactorEnabled,
                         AccessFailedCount = userList1[0].AccessFailedCount,
                         ConcurrencyStamp = userList1[0].ConcurrencyStamp,
-                        Nombre = userList1[0].Nombre,
-                        Apellido = userList1[0].Apellido,
-                        NIF = userList1[0].NIF,
-                        Imagen = userList1[0].Imagen,
+                        Nombre = Input.Nombre,
+                        Apellido = Input.Apellido,
+                        NIF = Input.NIF,
+                        Imagen = Input.Imagen,
                     };
+                    //esta linea es la que añade el dato que necesito a cada usuario con identityUser sabremos que usuario  
+                    //estamos actualizando.
+                    await objeto._userManager.AddToRoleAsync(identityUser, Input.Role);
                     objeto._context.Update(identityUser);
                     await objeto._context.SaveChangesAsync();
                    
@@ -173,6 +178,7 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
             
             return valor;
         }
+        //rellena el listado del combobox que he puesto en la página
         private List<SelectListItem> getRoles(String role)
         {
             objeto._userRoles.Add(new SelectListItem
