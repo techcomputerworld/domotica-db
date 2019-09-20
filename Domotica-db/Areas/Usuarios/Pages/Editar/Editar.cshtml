@@ -36,8 +36,8 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-10 offset-md-3 mt-2">
-                    <input asp-for="Input.Role" placeholder="Role" id="role" class="role" />
-                    <span asp-validation-for="Input.Role" class="text-danger"></span>
+                    <input asp-for="Input.RoleUser" placeholder="Role" id="role" class="role" />
+                    <span asp-validation-for="Input.RoleUser" class="text-danger"></span>
                 </div>
                 <div class="col-12 col-sm-6 offset-md-3 mt-2">
                     @Html.DropDownList("Input.Role", new SelectList(Model.Input.rolesLista, "Text", "Text"), "Seleccione un role", null)

@@ -23,7 +23,9 @@ namespace Domotica_db.Areas.Usuarios.Models
         //este campo es para cogerlo de la tabla usuarios y ponerlo aqui con la propiedad set
         public string Imagen { get; set; }
         public string Email { get; set; }
+        //Role es la lista de selección de roles
         public string Role { get; set; }
+        public string RoleUser { get; set; }
         public int ApplicationUserId { get; set; }
         /*
         [Required(ErrorMessage = "<font color='red'> El campo de contraseña es obligatorio. </font>")]

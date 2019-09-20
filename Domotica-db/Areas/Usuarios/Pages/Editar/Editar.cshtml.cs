@@ -19,6 +19,7 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
     {
         private ListObject objeto = new ListObject();
         private static List<ApplicationUser> userList1;
+        public int RoleId { get; set; }
        
 
         public EditModel(RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, ApplicationDbContext context, IHostingEnvironment environment)
@@ -76,6 +77,8 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
                 Email = userList1[0].Email,
                 Password = "*********",
                 Role = userRoles[0].Text,
+                RoleUser = userRoles[0].Text,
+                //aqui se hace una seleccion de rol a User
                 rolesLista = getRoles(userRoles[0].Text)
             };
             
@@ -107,10 +110,21 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
             {
                 if (ModelState.IsValid)
                 {
-                    objeto._userRoles.Add(new SelectListItem
+                    //obtener todos los roles de usuario 
+                    //UserRoles userRoles = new UserRoles();
+                    //para obtener todos los roles en el listado
+                    //Input.rolesLista.Where(role => role.Selected == true);
+                    /*
+                    Input.rolesLista.Add(new SelectListItem
                     {
+                        //aquí tengo que coger el valor de lo que ponga el usuario en el dropDownList no del Input.Role 
+                        //obtiene el valor de OnGetAsync().
                         Text = Input.Role
                     });
+                    */
+                    // esto es lo que hay que añadir a la base de datos 
+                    string role = Input.Role;
+                    
                     var identityUser = new ApplicationUser
                     {
                         Id = userList1[0].Id,
@@ -133,10 +147,23 @@ namespace Domotica_db.Areas.Usuarios.Pages.Editar
                         NIF = Input.NIF,
                         Imagen = Input.Imagen,
                     };
+
                     //esta linea es la que añade el dato que necesito a cada usuario con identityUser sabremos que usuario  
                     //estamos actualizando.
-                    await objeto._userManager.AddToRoleAsync(identityUser, Input.Role);
+                    //ApplicationUser user = await objeto._userManager.FindByIdAsync(userList1[0].Id);
+                    //el tema de los roles a ver como lo resuelvo
+                    //var roleUser = await objeto._userManager.GetRolesAsync(identityUser);
+                    //esto da error loo pongo en issues
+                    var result = await objeto._userManager.AddToRoleAsync(identityUser, Input.Role);
+                    /*
+
+                    if (!result.Succeeded)
+                    {
+                        var resultRemove = await objeto._userManager.RemoveFromRoleAsync(identityUser, roleUser);
+                    }
+                    */
                     objeto._context.Update(identityUser);
+                    
                     await objeto._context.SaveChangesAsync();
                    
                     //La imagen dijimos que iba a cogerla del nombre que haya
